@@ -20,7 +20,8 @@ export async function bundleCode(code: string, loader: Loader = 'js') {
         format: 'esm',
         plugins: [
             esbuildHttpPlugin
-        ]
+        ],
+        logLevel: 'silent',
     });
     return res.outputFiles[0].text;
 }
@@ -47,7 +48,8 @@ export async function bundleModuleCompute(file: string, cwd = process.cwd()) {
         format: 'esm',
         plugins: [
             esbuildHttpPlugin,
-        ]
+        ],
+        logLevel: 'silent',
     });
     return res.outputFiles[0].text;
 }
@@ -72,6 +74,7 @@ export async function bundleModuleJson(file: string, cwd = process.cwd()) {
         minify: true,
         keepNames: true,
         format: 'esm',
+        logLevel: 'silent',
     });
     return res.outputFiles[0].text;
 }
