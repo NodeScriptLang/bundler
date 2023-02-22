@@ -10,7 +10,8 @@
     "main": "out/main/index.js",
     "types": "out/main/index.d.ts",
     "files": [
-        "out/main/**/*"
+        "out/main/**/*",
+        "templates/*"
     ],
     "scripts": {
         "clean": "rm -rf out *.tsbuildinfo",
