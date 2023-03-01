@@ -27,10 +27,12 @@ try {
     const ctx = new GraphEvalContext();
     const res = await compute(json, ctx);
     process.stdout.write(JSON.stringify(res || ''));
+    process.exit(0);
 } catch (error) {
     process.stderr.write(JSON.stringify({
         name: 'EvaluationFailed',
         message: error.message,
     }));
+    process.exit(1);
 }
 `;
