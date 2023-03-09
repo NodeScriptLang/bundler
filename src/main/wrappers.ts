@@ -1,17 +1,18 @@
 import { bundleCode } from './bundle.js';
 
 /**
- * Creates a Node.js process runner of specified moduleUrl.
+ * Creates a Node.js process wrapper of specified moduleUrl.
  * The inputs are read from stdin which expects a utf8-encoded JSON.
- * The output is writted to stdout.
+ * The output is written to stdout.
  *
  * Note: this bundler requires `@nodescript/core` installed, which is also bundled.
  */
-export async function bundleNodeJsStdioRunner(moduleCode: string) {
+export async function bundleModuleGcfWrapper(moduleUrMjs: string) {
+    const compute = await import(moduleUrMjs);
     const buffer = [
         `import { GraphEvalContext } from '@nodescript/core/runtime';`,
-        moduleCode,
-        nodeJsStdioTemplate,
+        compute,
+        nodeJsStdioTemplate
     ].join('\n');
     return await bundleCode(buffer);
 }
