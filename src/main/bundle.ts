@@ -38,8 +38,8 @@ export async function bundleModuleCompute(file: string, cwd = process.cwd()) {
             resolveDir: cwd,
             loader,
             contents: [
-                `import { compute } from ${JSON.stringify('./' + file)};`,
-                `export { compute };`,
+                `import { compute, module } from ${JSON.stringify('./' + file)};`,
+                `export { compute, module };`,
             ].join('\n'),
         },
         write: false,
